@@ -2,9 +2,9 @@
 RunMe web app
 
 You will need the following files:
-    .htaccess
-    .htpasswd
-    servers.list
+* .htaccess
+* .htpasswd
+* servers.list
 
 For lack of an installer app:
 
@@ -14,26 +14,23 @@ For lack of an installer app:
 * Create a logfile at /var/log/runme.log writable by the apache2 process (usually www-data)
 
 Example .htaccess
----
+```
 AuthUserFile /var/www/html/RunMe/.htpasswd
 AuthGroupFile /dev/null
 AuthName "Please Enter Password"
 AuthType Basic
 Require valid-user
----
-
-To create an .htpasswd file:
----
+```
+To create a .htpasswd file:
+```
 htpasswd -c .htpasswd <user>
----
-
+```
 To add a user to a .htpasswd file:
----
+```
 htpasswd .htpasswd <user>
----
-
+```
 Example apache conf
----
+```
 <VirtualHost *:80>
     ServerName runme.obiserious.com
     ServerAdmin obi@obiserious.com
@@ -59,5 +56,5 @@ Example apache conf
     CustomLog ${APACHE_LOG_DIR}/runme.obiserious.access.log combined
 
 </VirtualHost>
----
+```
 
