@@ -23,11 +23,11 @@ Require valid-user
 ```
 To create a .htpasswd file:
 ```
-htpasswd -c .htpasswd <user>
+$ htpasswd -c .htpasswd <user>
 ```
 To add a user to a .htpasswd file:
 ```
-htpasswd .htpasswd <user>
+$ htpasswd .htpasswd <user>
 ```
 Example apache conf
 ```
