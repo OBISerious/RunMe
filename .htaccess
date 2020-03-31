@@ -1,5 +1,0 @@
-AuthUserFile /var/www/html/RunMe/.htpasswd
-AuthGroupFile /dev/null
-AuthName "Please Enter Password"
-AuthType Basic
-Require valid-user
