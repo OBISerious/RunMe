@@ -3,7 +3,6 @@
 if [ "$PWD" != "/var/www/html/RunMe" ]
 then
     sudo apt-get install apache2 php7.2-cli libapache2-mod-php -y
-    cd /var/www/html
     cd ..
     cp -pR RunMe /var/www/html/
     cd /var/www/html/RunMe
