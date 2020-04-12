@@ -7,13 +7,25 @@
 require 'header.php';
 
 $dry=1;
+$waitbetween=isset($ini["reboot"]["waitbetween"]) ? $ini["reboot"]["waitbetween"] : "300";
+$serverlist=isset($ini["reboot"]["serverlist"]) ? $ini["reboot"]["serverlist"] : "";
+$title=isset($ini["reboot"]["name"]) ? $ini["reboot"]["name"] : "";
+$instructions=isset($ini["reboot"]["instructions"]) ? $ini["reboot"]["instructions"] : "";
+
+if ("$title" != "") {
+    print "<script>document.title = \"$title\";</script>";
+}
+
+if ("$instructions" != "") {
+    print "<h1>$instructions</h1><br>";
+}
 
 print <<<_EOF_
 <select name="server" id="server" style="font-size:50px;">
 <option value="" selected="selected">Select a server</option>
 _EOF_;
 
-$handle = fopen("servers.list", "r");
+$handle = fopen($serverlist, "r");
 if ($handle) {
     while (($line = fgets($handle)) !== false) {
         $line = str_replace(array("\n", "\r"), '', $line);
@@ -35,8 +47,8 @@ function rebootaction() {
     var linearray = line.split(',');
     var name = linearray[0];
     var epoch = Math.round(Date.now() / 1000);
-    if (epoch - linearray[3] < 100) {
-        alert("Unable to reboot server within 5 minutes of last attempt");
+    if (epoch - linearray[3] < $waitbetween) {
+        alert("Unable to reboot server within " + $waitbetween + " seconds of last attempt");
     } else {
         var result = confirm("Do you really want to reboot server " + name);
         if (result == true) {

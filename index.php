@@ -12,6 +12,12 @@
 ///////////////////////////////////////////////////////////////////////////////
 include 'header.php';
 
+$organization=isset($ini["global"]["organization"]) ? $ini["global"]["organization"] : "RunMe";
+
+if ("$organization" != "") {
+            print "<script>document.title = \"$organization\";</script>";
+}
+
 print <<<_EOF_
 <form>
 <table border=0 cellpadding=0 cellspacing=0 width=100%>

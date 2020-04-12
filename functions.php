@@ -25,9 +25,13 @@ function button($text,$url) {
         }
 
 function writelog($text) {
-	include 'variables.php';
+	#include 'variables.php';
+    //global ini;
+    global $logfile;
+    //$logfile=$ini["global"]["logfile"];
 	$user="";
-	if(isset($_SERVER['PHP_AUTH_USER'])) $user=$_SERVER['PHP_AUTH_USER'];
+	//if(isset($_SERVER['PHP_AUTH_USER'])) $user=$_SERVER['PHP_AUTH_USER'];
+    $user=isset($_SERVER['PHP_AUTH_USER']) ? $_SERVER['PHP_AUTH_USER'] : "";
 	$handle=fopen($logfile,"a");
 	$date=date("Y-m-d H:i:s");
 	fwrite($handle,"$date $user $text\n");

@@ -8,6 +8,7 @@ require 'functions.php';
 $date=date("YmdHis");
 #$dry="echo ";
 $dry="";
+$timeout=isset($ini["reboot"]["timeout"]) ? $ini["reboot"]["timeout"] : "10";
 writelog("Reboot Action Run");
 
 if(isset($_GET["server"])) {
