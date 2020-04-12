@@ -6,8 +6,6 @@
 //// 20200331     Chris OBrien    Added runme.ini
 /////////////////////////////////////////////////////////////////////////////////
 
-//require 'variables.php';
-
 $ini=parse_ini_file("runme.ini", true);
 $ini=array_change_key_case($ini, CASE_LOWER);
 // print_r($ini);
@@ -25,8 +23,6 @@ function button($text,$url) {
         }
 
 function writelog($text) {
-	#include 'variables.php';
-    //global ini;
     global $logfile;
     //$logfile=$ini["global"]["logfile"];
 	$user="";
