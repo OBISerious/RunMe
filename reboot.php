@@ -35,7 +35,7 @@ function rebootaction() {
     var linearray = line.split(',');
     var name = linearray[0];
     var epoch = Math.round(Date.now() / 1000);
-    if (epoch - linearray[3] < 300) {
+    if (epoch - linearray[3] < 100) {
         alert("Unable to reboot server within 5 minutes of last attempt");
     } else {
         var result = confirm("Do you really want to reboot server " + name);

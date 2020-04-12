@@ -20,8 +20,13 @@ if(isset($_GET["server"])) {
 list($name,$host,$user) = explode(",", $server);
 writelog("Rebooting server $name, $host with user $user");
 
+#$cmd="${dry}ssh -o ConnectTimeout=10 $user@$host \"date\"";
+#writelog("$cmd");
+#$output=shell_exec($cmd);
+#writelog("$output");
+
 $cmd="${dry}ssh -o ConnectTimeout=10 $user@$host \"sudo shutdown -r now\"";
-#$cmd="${dry}ssh $user@$host \"date\"";
+#writelog("$cmd");
 $output=shell_exec($cmd);
 writelog("$output");
 header("location: reboot.php?");

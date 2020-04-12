@@ -8,6 +8,7 @@
 //      Use better authentication than .htaccess
 //      Real-time log updates
 //      Allow online editing of server names?
+//      Put css files local
 ///////////////////////////////////////////////////////////////////////////////
 include 'header.php';
 
