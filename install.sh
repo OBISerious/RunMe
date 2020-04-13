@@ -4,7 +4,7 @@ if [ "$PWD" != "/var/www/html/RunMe" ]
 then
     sudo apt-get install apache2 php7.2-cli libapache2-mod-php -y
     cd ..
-    cp -pR RunMe /var/www/html/
+    sudo cp -pR RunMe /var/www/html/
     cd /var/www/html/RunMe
 fi
 
@@ -14,6 +14,11 @@ sudo chown www-data:www-data /var/log/runme.log
 user=$(id -un)
 sudo chown $user:$user .
 sudo chown $user:$user *
+
+sudo apt-get install sqlite3 -y
+sudo apt-get install php-sqlite3 -y
+sudo sed -i "s/\[sqlite3\]/\[sqlite3\]\nextension=sqlite.so/" /etc/php/7.2/apache2/php.ini
+sudo systemctl restart apache2
 
 echo
 echo "Please copy runme.ini.sample to runme.ini and edit it."
