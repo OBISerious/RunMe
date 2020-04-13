@@ -27,12 +27,12 @@ writelog("Rebooting server $name, $host with user $user");
 #writelog("$output");
 
 $result = exec("timeout 5s ssh-keyscan -H $hostname >> ~/.ssh/known_hosts 2>/dev/null");
-if (file_exists("$user.id_rsa") {
+if (file_exists("$user.id_rsa")) {
     $rsa="-i $user.id_rsa";
 }else{
     $rsa="";
 }
-$cmd="${dry}ssh -o ConnectTimeout=10 $user@$host \"sudo shutdown -r now\" 2>&1";
+$cmd="${dry}ssh -o ConnectTimeout=10 -o PreferredAuthentications=publickey $rsa $user@$host \"sudo shutdown -r now\" 2>&1";
 #writelog("$cmd");
 $output=shell_exec($cmd);
 writelog("$output");

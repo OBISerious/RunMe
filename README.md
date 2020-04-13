@@ -11,6 +11,7 @@ bash install.sh
 
 Then:
 ```
+cd /var/www/html/RunMe
 cp -p runme.ini.sample runme.ini
 vi servers.list
 ```
