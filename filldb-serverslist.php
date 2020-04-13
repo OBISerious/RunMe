@@ -21,7 +21,13 @@ if ($handle) {
         }else{
                 $ping="down";
         }
-        $result = exec("timeout 5s ssh -o ConnectTimeout=2 -o PreferredAuthentications=publickey $user@$hostname date >/dev/null 2>&1; echo $?");
+        $result = exec("timeout 5s ssh-keyscan -H $hostname >> ~/.ssh/known_hosts 2>/dev/null");
+        if (file_exists("$user.id_rsa")) {
+                $rsa="-i $user.id_rsa";
+        }else{
+                $rsa="";
+        }
+        $result = exec("timeout 5s ssh -o ConnectTimeout=2 -o PreferredAuthentications=publickey $rsa $user@$hostname date >/dev/null 2>&1; echo $?");
         if ($result == "0"){
                 $conn="up";
         }else{

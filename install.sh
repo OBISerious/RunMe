@@ -5,15 +5,18 @@ then
     sudo apt-get install apache2 php7.2-cli libapache2-mod-php -y
     cd ..
     sudo cp -pR RunMe /var/www/html/
-    cd /var/www/html/RunMe
 fi
 
+cd /var/www/html/RunMe
 sudo cp -p RunMe.conf /etc/apache2/sites-enabled/RunMe.conf
 sudo touch /var/log/runme.log
 sudo chown www-data:www-data /var/log/runme.log
 user=$(id -un)
 sudo chown $user:$user .
 sudo chown $user:$user *
+sudo mkdir /var/www/.ssh
+sudo chown www-data:www-data !$
+sudo chmod 700 /var/www/.ssh
 
 sudo apt-get install sqlite3 -y
 sudo apt-get install php-sqlite3 -y
