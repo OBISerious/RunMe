@@ -26,6 +26,8 @@ print "<tr><td width=50%>";
 button("Reboot Server","reboot");
 print "<td>";
 button("Logs","logs");
+print "<tr><td>";
+button("Ping","ping");
 print "</form></table></div>";
 
 include 'footer.php';
