@@ -1,1 +1,1 @@
-* * * * * /var/www/html/RunMe/filldb-serverslist.php
+* * * * * /var/www/html/RunMe/filldb-serverslist.php >> /var/log/obi.log 2>&1

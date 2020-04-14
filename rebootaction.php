@@ -26,17 +26,19 @@ writelog("Rebooting server $name, $host with user $user");
 #$output=shell_exec($cmd);
 #writelog("$output");
 
-$result = exec("timeout 5s ssh-keyscan -H $hostname >> ~/.ssh/known_hosts 2>/dev/null");
+#$result = exec("timeout 5s ssh-keyscan -H $host >> ~/.ssh/known_hosts 2>/dev/null");
+$cmd="timeout 5s ssh-keyscan -H $host >> /var/www/.ssh/known_hosts";
+writelog("$cmd");
+$output=shell_exec($cmd);
+writelog("$output");
 if (file_exists("$user.id_rsa")) {
     $rsa="-i $user.id_rsa";
 }else{
     $rsa="";
 }
 $cmd="${dry}ssh -o ConnectTimeout=10 -o PreferredAuthentications=publickey $rsa $user@$host \"sudo shutdown -r now\" 2>&1";
-#writelog("$cmd");
+writelog("$cmd");
 $output=shell_exec($cmd);
 writelog("$output");
 header("location: reboot.php?");
-
-
 

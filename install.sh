@@ -23,6 +23,7 @@ sudo apt-get install sqlite3 -y
 sudo apt-get install php-sqlite3 -y
 sudo sed -i "s/\[sqlite3\]/\[sqlite3\]\nextension=sqlite.so/" /etc/php/7.2/apache2/php.ini
 sudo systemctl restart apache2
+chmod +x filldb-serverslist.php
 crontab filldb-serverslist.crontab 
 
 echo
