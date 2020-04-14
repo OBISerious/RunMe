@@ -23,3 +23,8 @@ vi $user.id_rsa
 chmod 700 $user.id_rsa
 sudo chown www-data:www-data $user.id_rsa
 ```
+
+```
+sudo touch /var/log/obi.log
+sudo chown obi:obi /var/log/obi.log
+```
