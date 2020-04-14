@@ -15,7 +15,7 @@ user=$(id -un)
 sudo chown $user:$user .
 sudo chown $user:$user *
 sudo mkdir /var/www/.ssh
-sudo chown www-data:www-data !$
+sudo chown www-data:www-data /var/www/.ssh
 sudo chmod 700 /var/www/.ssh
 
 sudo apt-get install sqlite3 -y
