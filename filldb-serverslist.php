@@ -22,8 +22,11 @@ if ($handle) {
                 $ping="down";
         }
         $result = exec("timeout 5s ssh-keyscan -H $hostname >> ~/.ssh/known_hosts 2>/dev/null");
-        if (file_exists("$user.id_rsa")) {
-                $rsa="-i $user.id_rsa";
+        $rsafilename="$user.id_rsa";
+		if (file_exists($rsafilename)) {
+                $rsa="-i $rsafilename";
+                $previousowner=posix_getpwuid(fileowner("$rsafilename"))["name"];
+                exec("sudo chown $(id -un) $rsafilename");
         }else{
                 $rsa="";
         }
@@ -33,6 +36,7 @@ if ($handle) {
         }else{
                 $conn="down";
         }
+		exec("sudo chown $previousowner $rsafilename");
         print "$hostname $ping $conn\n";
         $db->exec("INSERT INTO ping(hostname, ping, conn) VALUES(\"$name\", \"$ping\", \"$conn\")");
         #$hostname=preg_replace("/  */",",",$hostname);

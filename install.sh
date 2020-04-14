@@ -15,13 +15,15 @@ user=$(id -un)
 sudo chown $user:$user .
 sudo chown $user:$user *
 sudo mkdir /var/www/.ssh
-sudo chown www-data:www-data !$
+sudo chown www-data:www-data /var/www/.ssh
 sudo chmod 700 /var/www/.ssh
+sudo cp -p root.index.php ../index.php
 
 sudo apt-get install sqlite3 -y
 sudo apt-get install php-sqlite3 -y
 sudo sed -i "s/\[sqlite3\]/\[sqlite3\]\nextension=sqlite.so/" /etc/php/7.2/apache2/php.ini
 sudo systemctl restart apache2
+crontab filldb-serverslist.crontab 
 
 echo
 echo "Please copy runme.ini.sample to runme.ini and edit it."
