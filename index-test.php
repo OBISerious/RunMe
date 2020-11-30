@@ -12,6 +12,11 @@
 ///////////////////////////////////////////////////////////////////////////////
 include 'header.php';
 
+var_dump($ini);
+foreach ($ini as $key => $value) {
+        print "key $key\n";
+}
+
 $organization=isset($ini["global"]["organization"]) ? $ini["global"]["organization"] : "RunMe";
 
 if ("$organization" != "") {
@@ -30,10 +35,6 @@ print "<tr><td>";
 button("Ping","ping");
 print "<td>";
 actionbutton("Lights","lights");
-print "<tr><td>";
-button("Server info","serverinfo");
-print "<td>";
-button("Server report","serverreport");
 print "</form></table></div>";
 
 include 'footer.php';
