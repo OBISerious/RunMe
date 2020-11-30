@@ -1,0 +1,10 @@
+# Comma separated list
+# Fields: Light name, webhook, actions (pipe separated) [optional]
+Rec Room,recroomlights
+Couch,couchlights
+Basement,recroomlights-couchlights
+Pool Lights,poollights,on|off
+Living Room LEDs,livingroomleds,on|off
+Office Light,officelight,on|off
+Ceiling Light,celightlight
+Projector,projector,on|off
