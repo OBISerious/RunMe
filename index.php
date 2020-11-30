@@ -28,6 +28,12 @@ print "<td>";
 button("Logs","logs");
 print "<tr><td>";
 button("Ping","ping");
+print "<td>";
+actionbutton("Lights","lights");
+print "<tr><td>";
+button("Server info","serverinfo");
+print "<td>";
+button("Server report","serverreport");
 print "</form></table></div>";
 
 include 'footer.php';

@@ -18,6 +18,10 @@ function validate_ini($ini)
                 }
 }
 
+function actionbutton($text,$action) {
+        print "<input type=\"button\" value=\"$text\" style=\"padding: 15px; font-size: 18px; width: 100%; height: 200px; letter-spacing: 1px; font-size: 48;\" onClick=\"window.location='category.php?function=$action'\"/>";
+        }
+
 function button($text,$url) {
         print "<input type=\"button\" value=\"$text\" style=\"padding: 15px; font-size: 18px; width: 100%; height: 200px; letter-spacing: 1px; font-size: 48;\" onClick=\"window.location='$url.php'\"/>";
         }
